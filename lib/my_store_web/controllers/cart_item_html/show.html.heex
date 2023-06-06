@@ -1,0 +1,16 @@
+<.header>
+  Cart item <%= @cart_item.id %>
+  <:subtitle>This is a cart_item record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/products/cart_items/#{@cart_item}/edit"}>
+      <.button>Edit cart_item</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Product"><%= @cart_item.product_id %></:item>
+  <:item title="Quantity"><%= @cart_item.quantity %></:item>
+</.list>
+
+<.back navigate={~p"/products/cart_items"}>Back to cart_items</.back>
