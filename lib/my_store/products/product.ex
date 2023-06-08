@@ -7,6 +7,8 @@ defmodule MyStore.Products.Product do
     field :image, :string
     field :name, :string
     field :price, :decimal
+    has_one :cart_items, MyStore.CartItems.CartItem
+
 
     timestamps()
   end

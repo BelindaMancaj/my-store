@@ -3,6 +3,6 @@
   <:subtitle>Use this form to manage cart_item records in your database.</:subtitle>
 </.header>
 
-<.cart_item_form changeset={@changeset} action={~p"/cart_items/#{@cart_item}"} />
+<.cart_item_form changeset={@changeset} action={~p"/products/cart_items/#{@cart_item}"} />
 
 <.back navigate={~p"/products/cart_items"}>Back to cart_items</.back>

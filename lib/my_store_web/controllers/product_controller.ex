@@ -29,10 +29,10 @@ defmodule MyStoreWeb.ProductController do
   end
 
   def add_to_cart(conn, %{"id" => id})do
-    product = Products.get_product!(id)
+    # product = Products.get_product!(id)
 
-    changeset = Products.change_product(product)
-    render(conn, :cart_item_form, product: product, changeset: changeset)
+    # changeset = Products.change_product(product)
+    # render(conn, :cart_item_form, product: product, changeset: changeset)
     # case CartItems.create_cart_item(cart_item_params) do
     #   {:ok, cart_item} ->
     #     conn

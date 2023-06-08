@@ -17,20 +17,15 @@ defmodule MyStoreWeb.Router do
   scope "/products", MyStoreWeb do
     pipe_through :browser
 
-    get "/", ProductController, :index
-    get "/new", ProductController, :new
-    post "/", ProductController, :create
-    # get "/:id", ProductController, :show #This causes an error after I added the cart routes
-    get "/:id/edit", ProductController, :edit
-    put "/:id", ProductController, :update
-    delete "/:id", ProductController, :delete
+    #The show route for products, causes an error when trying to show the cart items
+    resources "/", ProductController, except: [:show]
     get "/add_to_cart/:id", ProductController, :add_to_cart
-    #cart item routes
-    get "/cart_items/", CartItemController, :index
-    get "/cart_items/:id/edit", CartItemController, :edit
-    put "/cart_items/:id", CartItemController, :update
-    delete "/cart_items/:id", CartItemController, :delete
+  end
 
+  scope "/products", MyStoreWeb do
+    pipe_through :browser
+
+    resources "/cart_items", CartItemController, except: [:new]
   end
 
   # Other scopes may use custom stacks.

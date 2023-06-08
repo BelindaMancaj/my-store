@@ -3,8 +3,8 @@ defmodule MyStore.CartItems.CartItem do
   import Ecto.Changeset
 
   schema "cart_items" do
-    field :product_id, :integer
     field :quantity, :integer
+    belongs_to :product, MyStore.Products.Product
 
     timestamps()
   end

@@ -49,8 +49,9 @@ defmodule MyStore.CartItems do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_cart_item(attrs \\ %{}) do
-    %CartItem{}
+  def create_cart_item(conn, attrs \\ %{}) do
+    changeset = conn.assigns.product
+    |> Ecto.build_assoc(:cart_items)
     |> CartItem.changeset(attrs)
     |> Repo.insert()
   end

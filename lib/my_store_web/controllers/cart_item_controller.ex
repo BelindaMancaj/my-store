@@ -15,11 +15,12 @@ defmodule MyStoreWeb.CartItemController do
   end
 
   def create(conn, %{"cart_item" => cart_item_params}) do
-    case CartItems.create_cart_item(cart_item_params) do
+
+    case CartItems.create_cart_item(conn, cart_item_params) do
       {:ok, cart_item} ->
         conn
         |> put_flash(:info, "Cart item created successfully.")
-        |> redirect(to: ~p"/cart_items/#{cart_item}")
+        |> redirect(to: ~p"/products/cart_items/#{cart_item}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :new, changeset: changeset)
@@ -44,7 +45,7 @@ defmodule MyStoreWeb.CartItemController do
       {:ok, cart_item} ->
         conn
         |> put_flash(:info, "Cart item updated successfully.")
-        |> redirect(to: ~p"/cart_items/#{cart_item}")
+        |> redirect(to: ~p"/products/cart_items/#{cart_item}")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :edit, cart_item: cart_item, changeset: changeset)
@@ -57,6 +58,6 @@ defmodule MyStoreWeb.CartItemController do
 
     conn
     |> put_flash(:info, "Cart item deleted successfully.")
-    |> redirect(to: ~p"/cart_items")
+    |> redirect(to: ~p"/products/cart_items")
   end
 end
