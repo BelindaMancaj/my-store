@@ -19,6 +19,7 @@ defmodule MyStore.CartItems do
   """
   def list_cart_items do
     Repo.all(CartItem)
+    # |> Repo.preload([cart_items: [:product]])
   end
 
   @doc """
@@ -36,6 +37,7 @@ defmodule MyStore.CartItems do
 
   """
   def get_cart_item!(id), do: Repo.get!(CartItem, id)
+  # |> Repo.preload([cart_items: [:product]])
 
   @doc """
   Creates a cart_item.

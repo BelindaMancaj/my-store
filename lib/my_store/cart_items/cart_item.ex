@@ -14,5 +14,6 @@ defmodule MyStore.CartItems.CartItem do
     cart_item
     |> cast(attrs, [:product_id, :quantity])
     |> validate_required([:product_id, :quantity])
+    |> foreign_key_constraint(:product_id)
   end
 end

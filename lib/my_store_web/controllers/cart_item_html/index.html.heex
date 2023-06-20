@@ -3,12 +3,10 @@
 </.header>
 
 <.table id="cart_items" rows={@cart_items} row_click={&JS.navigate(~p"/products/cart_items/#{&1}")}>
-  <:col :let={cart_item} label="Product"><%= cart_item.product_id %></:col>
+  <:col :let={cart_item} label="Product"><%= cart_item.id %></:col>
   <:col :let={cart_item} label="Quantity"><%= cart_item.quantity %></:col>
   <:action :let={cart_item}>
- <div class="sr-only">
-      <.link navigate={~p"/products/cart_items/#{cart_item}"}>Show</.link>
-    </div>
+
     <.link navigate={~p"/products/cart_items/#{cart_item}/edit"}>Edit</.link>
   </:action>
   <:action :let={cart_item}>

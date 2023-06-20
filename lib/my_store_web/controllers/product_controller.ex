@@ -28,20 +28,23 @@ defmodule MyStoreWeb.ProductController do
     end
   end
 
-  def add_to_cart(conn, %{"id" => id})do
-    # product = Products.get_product!(id)
+  def add_to_cart(conn,  %{"id" => id})do
 
-    # changeset = Products.change_product(product)
-    # render(conn, :cart_item_form, product: product, changeset: changeset)
-    # case CartItems.create_cart_item(cart_item_params) do
-    #   {:ok, cart_item} ->
-    #     conn
-    #     |> put_flash(:info, "Product added to cart successfully.")
-    #     |> redirect(to: ~p"/cart_items/#{cart_item}")
+    product = Products.get_product!(id)
+    changeset = Products.change_product(product)
+    render(conn, :cart_item_form, product: product, changeset: changeset)
+  end
 
-    #   {:error, %Ecto.Changeset{} = changeset} ->
-    #     render(conn, :cart_item, product: product, changeset: changeset)
-    # end
+  def create_cart_items(conn, %{"cart_item" => cart_item_params})do
+     case CartItems.create_cart_item(cart_item_params) do
+      {:ok, cart_item} ->
+        conn
+        |> put_flash(:info, "Product added to cart successfully.")
+        |> redirect(to: ~p"/products/cart_items")
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, :cart_item, changeset: changeset)
+    end
   end
 
   def show(conn, %{"id" => id}) do

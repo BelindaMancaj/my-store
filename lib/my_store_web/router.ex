@@ -19,13 +19,17 @@ defmodule MyStoreWeb.Router do
 
     #The show route for products, causes an error when trying to show the cart items
     resources "/", ProductController, except: [:show]
+
+    # resources "/cart_items/:id", CartItemController, only: [:create]
+
     get "/add_to_cart/:id", ProductController, :add_to_cart
+    post "/cart_items", ProductController, :create_cart_items
   end
 
   scope "/products", MyStoreWeb do
     pipe_through :browser
 
-    resources "/cart_items", CartItemController, except: [:new]
+    resources "/cart_items", CartItemController, except: [:new, :create]
   end
 
   # Other scopes may use custom stacks.
