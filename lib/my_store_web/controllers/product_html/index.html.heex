@@ -20,7 +20,7 @@
       <.link navigate={~p"/products/#{product}"}>Show</.link>
     </div>
     <.link navigate={~p"/products/#{product}/edit"}>Edit</.link>
-    <.link navigate={~p"/products/add_to_cart/#{product}"}>Add to cart</.link>
+    <.link navigate={~p"/products/cart_items/#{product}/new"}>Add to cart</.link>
   </:action>
   <:action :let={product}>
     <.link href={~p"/products/#{product}"} method="delete" data-confirm="Are you sure?">

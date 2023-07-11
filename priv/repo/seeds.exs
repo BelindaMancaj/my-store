@@ -9,7 +9,7 @@
 alias MyStore.Repo
 alias MyStore.CartItems.CartItem
 
-  Repo.insert!(%CartItem{
-    product_id: 2,
-    quantity: 4
-  })
+Repo.insert!(%CartItem{
+  product_id: 2,
+  quantity: 4
+})

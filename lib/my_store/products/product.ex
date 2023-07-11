@@ -9,7 +9,6 @@ defmodule MyStore.Products.Product do
     field :price, :decimal
     has_one :cart_items, MyStore.CartItems.CartItem
 
-
     timestamps()
   end
 

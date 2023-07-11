@@ -3,8 +3,18 @@ defmodule MyStoreWeb.ProductControllerTest do
 
   import MyStore.ProductsFixtures
 
-  @create_attrs %{description: "some description", image: "some image", name: "some name", price: "120.5"}
-  @update_attrs %{description: "some updated description", image: "some updated image", name: "some updated name", price: "456.7"}
+  @create_attrs %{
+    description: "some description",
+    image: "some image",
+    name: "some name",
+    price: "120.5"
+  }
+  @update_attrs %{
+    description: "some updated description",
+    image: "some updated image",
+    name: "some updated name",
+    price: "456.7"
+  }
   @invalid_attrs %{description: nil, image: nil, name: nil, price: nil}
 
   describe "index" do

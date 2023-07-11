@@ -14,18 +14,17 @@ defmodule MyStoreWeb.CartItemController do
     render(conn, :new, changeset: changeset)
   end
 
-  # def create(conn, %{"cart_item" => cart_item_params}) do
+  def create(conn, %{"cart_item" => cart_item_params}) do
+    case CartItems.create_cart_item(conn, cart_item_params) do
+      {:ok, cart_item} ->
+        conn
+        |> put_flash(:info, "Cart item created successfully.")
+        |> redirect(to: ~p"/products/cart_items/#{cart_item}")
 
-  #   case CartItems.create_cart_item(conn, cart_item_params) do
-  #     {:ok, cart_item} ->
-  #       conn
-  #       |> put_flash(:info, "Cart item created successfully.")
-  #       |> redirect(to: ~p"/products/cart_items/#{cart_item}")
-
-  #     {:error, %Ecto.Changeset{} = changeset} ->
-  #       render(conn, :new, changeset: changeset)
-  #   end
-  # end
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, :new, changeset: changeset)
+    end
+  end
 
   def show(conn, %{"id" => id}) do
     cart_item = CartItems.get_cart_item!(id)

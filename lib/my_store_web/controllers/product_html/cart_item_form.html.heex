@@ -3,7 +3,7 @@
   <:subtitle>Use this form to add product to cart.</:subtitle>
 </.header>
 
-<.simple_form :let={f} for={@changeset} action={~p"/products/add_to_cart/#{@product}"}>
+<.simple_form :let={f} for={@changeset} action={~p"/products/#{@product}"}>
   <.error :if={@changeset.action}>
     Oops, something went wrong! Please check the errors below.
   </.error>
@@ -13,6 +13,5 @@
     <.button>Save Item</.button>
   </:actions>
 </.simple_form>
-
 
 <.back navigate={~p"/products"}>Back to products</.back>

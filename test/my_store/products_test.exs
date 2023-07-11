@@ -21,7 +21,12 @@ defmodule MyStore.ProductsTest do
     end
 
     test "create_product/1 with valid data creates a product" do
-      valid_attrs = %{description: "some description", image: "some image", name: "some name", price: "120.5"}
+      valid_attrs = %{
+        description: "some description",
+        image: "some image",
+        name: "some name",
+        price: "120.5"
+      }
 
       assert {:ok, %Product{} = product} = Products.create_product(valid_attrs)
       assert product.description == "some description"
@@ -36,7 +41,13 @@ defmodule MyStore.ProductsTest do
 
     test "update_product/2 with valid data updates the product" do
       product = product_fixture()
-      update_attrs = %{description: "some updated description", image: "some updated image", name: "some updated name", price: "456.7"}
+
+      update_attrs = %{
+        description: "some updated description",
+        image: "some updated image",
+        name: "some updated name",
+        price: "456.7"
+      }
 
       assert {:ok, %Product{} = product} = Products.update_product(product, update_attrs)
       assert product.description == "some updated description"
